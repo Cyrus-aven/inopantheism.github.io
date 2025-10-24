@@ -1,52 +1,1600 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
+    <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TK2BH9FT');</script>
+<!-- End Google Tag Manager -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>INOPANTHEISM - نظریه اینوپانتئیسم</title>
-    <style>
+    <title>INOPANTHEISM - خانه</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+   <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-bg: #0B1D3A;
+            --secondary-bg: #1a2b4a;
+            --accent-gold: #D4AF37;
+            --accent-gold-light: rgba(212, 175, 55, 0.1);
+            --text-primary: #F5F5F5;
+            --text-secondary: rgba(245, 245, 245, 0.7);
+            --text-muted: rgba(245, 245, 245, 0.5);
+            /* تعریف فونت‌ها */
+            --font-en: 'Times New Roman', Times, serif;
+            --font-fa: 'Vazirmatn', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
         body {
-            font-family: Tahoma, Arial, sans-serif;
-            background: #0B1D3A;
-            color: #F5F5F5;
-            text-align: center;
-            padding: 50px;
-            direction: rtl;
+            font-family: var(--font-fa);
+            background: linear-gradient(135deg, var(--primary-bg) 0%, #0f2847 50%, var(--primary-bg) 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            cursor: default;
         }
-        .logo {
-            color: #D4AF37;
-            font-size: 3rem;
-            margin-bottom: 20px;
-            font-weight: bold;
+
+        /* متن انگلیسی */
+        .english-text, [lang="en"] {
+            font-family: var(--font-en) !important;
+            direction: ltr;
+            text-align: left;
         }
-        .subtitle {
-            color: #F5F5F5;
+
+        /* متن ترکی */
+        [lang="tr"] {
+            font-family: var(--font-en) !important;
+            direction: ltr;
+            text-align: left;
+        }
+
+        /* کهکشان در پس‌زمینه با حرکت سریع به سمت درون */
+        #galaxyBackground {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            perspective: 1000px;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: moveInward 12s linear infinite;
+        }
+
+        @keyframes moveInward {
+            0% {
+                transform: translateZ(0) scale(1);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateZ(-500px) scale(0.3);
+                opacity: 0;
+            }
+        }
+
+        /* دکمه اسکرول به بالا */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--accent-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .scroll-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+            background: #b8941f;
+        }
+
+        .scroll-to-top i {
+            color: var(--primary-bg);
             font-size: 1.2rem;
-            margin-bottom: 30px;
+        }
+
+        /* Header - FIXED */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(11, 29, 58, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            transition: all 0.5s ease;
+        }
+
+        .header.scrolled {
+            background: rgba(11, 29, 58, 0.98);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2rem;
+            height: 60px;
+        }
+
+        /* لوگو - FIXED */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            text-decoration: none;
+        }
+
+        .logo-image {
+            height: 40px;
+            width: auto;
+            mix-blend-mode: lighten;
+            transition: transform 0.5s ease;
             opacity: 0.9;
         }
-        .message {
-            background: rgba(212, 175, 55, 0.1);
-            padding: 20px;
-            border-radius: 10px;
-            border: 1px solid #D4AF37;
-            max-width: 600px;
-            margin: 0 auto;
+
+        .logo:hover .logo-image {
+            transform: scale(1.1);
         }
+
+        .logo-text {
+            font-size: 1.2rem;
+            font-family: var(--font-en);
+            color: var(--text-primary);
+            letter-spacing: 1px;
+            font-weight: bold;
+        }
+
+        /* منوی اصلی - FIXED */
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            position: relative;
+            font-family: var(--font-fa);
+            font-weight: 500;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--accent-gold);
+            background: var(--accent-gold-light);
+            transform: translateY(-2px);
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(to right, transparent, var(--accent-gold), transparent);
+        }
+
+        /* انتخاب زبان - FIXED */
+        .language-switcher {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .lang-btn {
+            background: var(--primary-bg);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            color: var(--text-primary);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.9rem;
+            font-family: var(--font-fa);
+            font-weight: 500;
+        }
+
+        .lang-btn:hover {
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--accent-gold);
+            transform: translateY(-2px);
+        }
+
+        .lang-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: var(--primary-bg);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 8px;
+            padding: 6px;
+            min-width: 110px;
+            display: none;
+            z-index: 1001;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .lang-dropdown.show {
+            display: block;
+        }
+
+        .lang-option {
+            padding: 6px 10px;
+            color: var(--text-primary);
+            text-decoration: none;
+            display: block;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-align: left;
+            font-size: 0.9rem;
+            font-family: var(--font-fa);
+            font-weight: 500;
+        }
+
+        .lang-option:hover {
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--accent-gold);
+        }
+
+        /* استایل‌های جدید برای زبان ترکی */
+        [lang="tr"] .nav-link.active::after {
+            left: 0;
+            right: 0;
+            background: linear-gradient(to left, transparent, var(--accent-gold), transparent);
+        }
+
+        [lang="tr"] .nav-menu {
+            direction: ltr;
+        }
+
+        [lang="tr"] .nav-link {
+            text-align: center;
+            direction: ltr;
+            font-size: 0.85rem;
+            padding: 0.5rem 0.8rem;
+            letter-spacing: 0.2px;
+        }
+
+        [lang="tr"] .lang-btn {
+            direction: ltr;
+            text-align: left;
+            font-size: 0.85rem;
+        }
+
+        [lang="tr"] .lang-dropdown {
+            right: auto;
+            left: 0;
+        }
+
+        [lang="tr"] .lang-option {
+            text-align: left;
+            direction: ltr;
+            font-size: 0.85rem;
+        }
+
+        /* استایل برای فوتر در زبان ترکی */
+        [lang="tr"] .footer-section a,
+        [lang="tr"] .footer-section p {
+            text-align: right;
+            direction: ltr;
+        }
+
+        [lang="tr"] .social-link {
+            direction: ltr;
+            justify-content: flex-start;
+        }
+
+        [lang="tr"] .social-link span {
+            direction: ltr;
+        }
+
+        /* استایل برای سوالات در زبان ترکی */
+        [lang="tr"] .questions-list {
+            padding-right: 0;
+            padding-left: 2rem;
+        }
+
+        [lang="tr"] .question-item::before {
+            right: auto;
+            left: 0;
+        }
+
+        /* استایل برای دکمه‌ها در زبان ترکی */
+        [lang="tr"] .cta-btn {
+            direction: ltr;
+        }
+
+        [lang="tr"] .download-btn,
+        [lang="tr"] .preview-btn,
+        [lang="tr"] .submit-btn {
+            direction: ltr;
+        }
+
+        /* استایل برای فرم‌ها در زبان ترکی */
+        [lang="tr"] .form-input,
+        [lang="tr"] .form-textarea,
+        [lang="tr"] .form-select {
+            direction: ltr;
+            text-align: left;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding-top: 120px;
+            min-height: 100vh;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem 2rem;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            animation: fadeInUp 1s ease-out;
+            z-index: 1;
+            margin-top: -40px;
+        }
+
+        .hero-logo {
+            width: 260px;
+            height: 260px;
+            margin: 0 auto 0.2rem;
+            opacity: 0.9;
+            animation: logoFade 5s ease-in-out infinite;
+            object-fit: contain;
+        }
+
+        @keyframes logoFade {
+            0%, 100% {
+                opacity: 0.2;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        .hero-title {
+            font-size: 4.5rem;
+            font-weight: bold;
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+            font-family: var(--font-fa);
+            line-height: 1.2;
+            margin-top: 0.3rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-family: var(--font-fa);
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .cta-btn {
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: var(--font-fa);
+        }
+
+        .cta-btn.primary {
+            background: linear-gradient(135deg, var(--accent-gold) 0%, #b8941f 100%);
+            color: var(--primary-bg);
+            border: none;
+        }
+
+        .cta-btn.secondary {
+            background: transparent;
+            color: var(--accent-gold);
+            border: 2px solid var(--accent-gold);
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.3);
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 4rem 2rem;
+            background: rgba(11, 29, 58, 0.3);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--accent-gold);
+            margin-bottom: 2rem;
+            font-family: var(--font-fa);
+            font-weight: bold;
+        }
+
+        .section-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            font-size: 1.1rem;
+            text-align: justify;
+        }
+
+        .section-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        .questions-list {
+            margin: 2rem 0;
+            padding-right: 2rem;
+        }
+
+        .question-item {
+            margin-bottom: 1rem;
+            position: relative;
+            padding-right: 1.5rem;
+        }
+
+        .question-item::before {
+            content: "•";
+            color: var(--accent-gold);
+            position: absolute;
+            right: 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            max-width: 800px;
+            margin: 2rem auto 0;
+        }
+
+        .feature-card {
+            background: rgba(11, 29, 58, 0.5);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(212, 175, 55, 0.5);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+        }
+
+        .feature-title {
+            font-size: 1.3rem;
+            color: var(--text-primary);
+            margin-bottom: 0.8rem;
+            font-family: var(--font-fa);
+            font-weight: 600;
+        }
+
+        .feature-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-family: var(--font-fa);
+            font-size: 0.95rem;
+        }
+
+        /* Quote Section */
+        .quote-section {
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .quote-text {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto 1.5rem;
+            font-family: var(--font-fa);
+        }
+
+        .quote-author {
+            font-size: 1.1rem;
+            color: var(--accent-gold);
+            font-family: var(--font-fa);
+        }
+
+        /* استایل‌های جدید برای بخش‌های اضافه شده */
+        .text-boxes-section {
+            padding: 4rem 2rem;
+            background: rgba(11, 29, 58, 0.2);
+        }
+
+        .text-box {
+            background: rgba(11, 29, 58, 0.5);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .text-box:hover {
+            border-color: rgba(212, 175, 55, 0.5);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .text-box-title {
+            font-size: 1.8rem;
+            color: var(--accent-gold);
+            margin-bottom: 1.5rem;
+            font-family: var(--font-fa);
+            font-weight: bold;
+            text-align: center;
+            border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+            padding-bottom: 0.8rem;
+        }
+
+        .text-box-content {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            font-size: 1.1rem;
+            text-align: justify;
+        }
+
+        .text-box-content p {
+            margin-bottom: 1.2rem;
+        }
+
+        .text-box-content .highlight {
+            color: var(--accent-gold);
+            font-weight: 600;
+        }
+
+        /* استایل جدید برای معادلات - بدون کادر و با فونت تیتر */
+        .gold-equation {
+            background: transparent;
+            border: none;
+            padding: 1.5rem 0;
+            margin: 1.5rem 0;
+            text-align: center;
+            font-family: var(--font-fa);
+            font-size: 1.5rem;
+            color: var(--accent-gold);
+            direction: ltr;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            font-weight: bold;
+        }
+
+        .equation-line {
+            display: block;
+            margin: 0.8rem 0;
+            padding: 0.5rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .equation-symbol {
+            color: var(--accent-gold);
+            margin: 0 0.5rem;
+            font-weight: bold;
+        }
+/* استایل برای نکات طلایی در زبان‌های مختلف */
+[lang="fa"] .question-item::before {
+    right: 0;
+    left: auto;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+[lang="en"] .question-item::before,
+[lang="tr"] .question-item::before {
+    right: auto;
+    left: 0;
+    margin-left: -12px;  /* افزایش فاصله از سمت چپ */
+    margin-right: 12px;  /* افزایش فاصله از سمت راست */
+}
+
+[lang="en"] .questions-list,
+[lang="tr"] .questions-list {
+    padding-right: 0;
+    padding-left: 2.5rem;  /* افزایش padding برای فضای بیشتر */
+}
+
+/* برای موبایل */
+@media (max-width: 768px) {
+    [lang="en"] .questions-list,
+    [lang="tr"] .questions-list {
+        padding-right: 0;
+        padding-left: 2rem;  /* افزایش padding در موبایل */
+    }
+    
+    [lang="en"] .question-item::before,
+    [lang="tr"] .question-item::before {
+        margin-left: -10px;  /* افزایش فاصله در موبایل */
+        margin-right: 10px;  /* افزایش فاصله در موبایل */
+    }
+}
+
+/* برای موبایل خیلی کوچک */
+@media (max-width: 480px) {
+    [lang="en"] .questions-list,
+    [lang="tr"] .questions-list {
+        padding-left: 1.8rem;  /* تنظیم برای موبایل کوچک */
+    }
+    
+    [lang="en"] .question-item::before,
+    [lang="tr"] .question-item::before {
+        margin-left: -8px;  /* تنظیم برای موبایل کوچک */
+        margin-right: 8px;  /* تنظیم برای موبایل کوچک */
+    }
+}
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 60px;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            background: rgba(11, 29, 58, 0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-section h3 {
+            color: var(--accent-gold);
+            font-weight: 500;
+            margin-bottom: 0.8rem;
+            letter-spacing: 1px;
+            font-size: 1.1rem;
+            font-family: var(--font-fa);
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            line-height: 1.8;
+            font-size: 0.95rem;
+            font-family: var(--font-fa);
+        }
+
+        .footer-section a:hover {
+            color: var(--accent-gold);
+        }
+
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            transform: translateX(5px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+            padding-top: 1.5rem;
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-family: var(--font-fa);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .hero-content {
+                margin-top: -30px;
+            }
+
+            .hero-logo {
+                width: 200px;
+                height: 200px;
+                margin-bottom: 0.1rem;
+            }
+
+            .hero-title {
+                font-size: 3rem;
+                margin-bottom: 0.8rem;
+                margin-top: 0.2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .cta-buttons {
+                margin-top: 0.5rem;
+            }
+
+            .cta-btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .logo-image {
+                height: 32px;
+            }
+
+            .logo-text {
+                font-size: 1rem;
+            }
+
+            .section-content {
+                font-size: 1rem;
+            }
+
+            .questions-list {
+                padding-right: 1.5rem;
+            }
+
+            [lang="en"] .questions-list,
+            [lang="tr"] .questions-list {
+                padding-right: 0;
+                padding-left: 1.5rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+            }
+
+            .quote-text {
+                font-size: 1.3rem;
+            }
+
+            .scroll-to-top {
+                bottom: 20px;
+                left: 20px;
+                width: 45px;
+                height: 45px;
+            }
+
+            .text-box {
+                padding: 1.8rem;
+                max-width: 95%;
+            }
+
+            .text-box-title {
+                font-size: 1.5rem;
+            }
+
+            .gold-equation {
+                font-size: 1.3rem;
+                padding: 1.2rem 0;
+            }
+
+            /* Responsive برای زبان ترکی */
+            [lang="tr"] .nav-menu {
+                direction: rtl;
+            }
+
+            [lang="tr"] .nav-link {
+                font-size: 0.8rem;
+                padding: 0.4rem 0.6rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content {
+                margin-top: -20px;
+            }
+
+            .hero-logo {
+                width: 160px;
+                height: 160px;
+                margin-bottom: 0.05rem;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+                margin-bottom: 0.5rem;
+                margin-top: 0.1rem;
+            }
+
+            .feature-card {
+                padding: 1.5rem;
+            }
+
+            .quote-text {
+                font-size: 1.2rem;
+            }
+
+            .logo-image {
+                height: 28px;
+            }
+
+            .logo-text {
+                font-size: 0.9rem;
+            }
+
+            .scroll-to-top {
+                bottom: 15px;
+                left: 15px;
+                width: 40px;
+                height: 40px;
+            }
+
+            .scroll-to-top i {
+                font-size: 1rem;
+            }
+
+            .text-box {
+                padding: 1.5rem;
+                max-width: 95%;
+            }
+
+            .text-box-title {
+                font-size: 1.3rem;
+            }
+
+            .gold-equation {
+                font-size: 1.2rem;
+                padding: 1rem 0;
+            }
+
+            [lang="tr"] .nav-link {
+                font-size: 0.75rem;
+                padding: 0.3rem 0.5rem;
+            }
+        }
+        /* اضافه کردن در استایل‌ها */
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2.2rem;
+    }
+    .nav-container {
+        padding: 0 1rem;
+    }
+}
     </style>
 </head>
 <body>
-    <div class="logo">INOPANTHEISM</div>
-    <div class="subtitle">نظریه اینوپانتئیسم - بازتعریف هستی، خدا و انسان</div>
-    
-    <div class="message">
-        <h3>✅ سایت با موفقیت راه‌اندازی شد!</h3>
-        <p>این نسخه آزمایشی سایت INOPANTHEISM است.</p>
-        <p>به زودی محتوای کامل اضافه خواهد شد.</p>
+    <!-- کهکشان در پس‌زمینه -->
+    <div id="galaxyBackground"></div>
+
+    <!-- دکمه اسکرول به بالا -->
+    <div class="scroll-to-top" id="scrollToTop">
+        <i class="fas fa-chevron-up"></i>
     </div>
 
-    <div style="margin-top: 30px;">
-        <p>تماس: cyrusaven369@gmail.com</p>
+    <!-- Header با منوی درست شده -->
+    <header class="header" id="header">
+        <div class="nav-container">
+         <img src="images/LOGO-%20Inopantism.png" 
+     alt="Inopantism Logo" 
+     class="logo-image">
+                <span class="logo-text">INOPANTHEISM</span>
+            </a>
+
+            <!-- منوی اصلی - در وسط -->
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link active" data-i18n="home">خانه</a></li>
+                <li><a href="theory.html" class="nav-link" data-i18n="theory">نظریه</a></li>
+                <li><a href="articles.html" class="nav-link" data-i18n="articles">مقالات</a></li>
+                <li><a href="books.html" class="nav-link" data-i18n="books">کتاب ها</a></li>
+                <li><a href="about.html" class="nav-link" data-i18n="about">درباره من</a></li>
+                <li><a href="contact.html" class="nav-link" data-i18n="contact">تماس با من</a></li>
+            </ul>
+
+            <!-- انتخاب زبان - در سمت راست -->
+            <div class="language-switcher">
+                <button class="lang-btn" id="langBtn">
+                    <i class="fas fa-globe"></i>
+                    <span id="currentLang">فارسی</span>
+                </button>
+                <div class="lang-dropdown" id="langDropdown">
+                    <div class="lang-option" data-lang="fa">فارسی</div>
+                    <div class="lang-option" data-lang="en">English</div>
+                    <div class="lang-option" data-lang="tr">Türkçe</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-content">
+<!-- در هیرو سکشن -->
+<img src="images/LOGO-%20Inopantism.png" 
+     alt="Inopantism Logo" 
+     class="hero-logo">            
+         <h1 class="hero-title" data-i18n="hero_title"> اینوپانتئیسم </h1>
+                <p class="hero-subtitle" data-i18n="hero_subtitle">
+                    نظریه‌ی «اینوپانتیئیسم» بازخوانی بنیادین هستی‌ست؛ با عبور از دوگانگی‌های فلسفی، محدودیت‌های علمی، و تصویر سنتی از خدا، این نظریه نگاهی وحدت‌گرایانه به حقیقتی زنده و جاری در دل هستی ارائه می‌دهد.
+                </p>
+                <div class="cta-buttons">
+                    <a href="theory.html" class="cta-btn primary">
+                        <i class="fas fa-book-open"></i>
+                        <span data-i18n="cta_theory">مطالعه نظریه</span>
+                    </a>
+                    <a href="about.html" class="cta-btn secondary">
+                        <i class="fas fa-user"></i>
+                        <span data-i18n="cta_about">درباره نویسنده</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features-section">
+            <!-- بخش متنی اضافه شده - حالا شامل سه کادر -->
+            <div class="text-boxes-section">
+                <!-- کادر اول: آغاز اینوپانتئیسم از دل معما -->
+                <div class="text-box">
+                    <h3 class="text-box-title" data-i18n="features_title">آغاز «اینوپانتئیسم» از دل معما</h3>
+                    <div class="text-box-content">
+                        <p data-i18n="intro_paragraph1">
+                            پیدایش هستی یکی از بنیادی‌ترین معماهایی است که از آغاز شکل‌گیری اندیشه تا کنون، ذهن بشر را به چالش کشیده است. از اسطوره‌های کهن تا نظریه‌های علمی مدرن، انسان همواره کوشیده است درک کند که این «بودن» از کجا سربرآورده و چگونه ممکن شده است. با این حال، هر پاسخی خود پرسشی تازه آفریده و هیچ‌یک از نظام‌های فکری؛ نه الهیات، نه علم و نه فلسفه؛ نتوانسته‌اند پاسخی بی‌تناقض و قاطع به این پرسش ارائه دهند.
+                        </p>
+                        
+                        <p data-i18n="intro_paragraph2">
+                            پرسش‌هایی که هنوز پابرجا هستند:
+                        </p>
+                        
+                        <div class="questions-list">
+                            <div class="question-item" data-i18n="question1">چگونه ممکن است هستی بی‌نهایت باشد، در حالی که برای آن آغازی متصوریم؟</div>
+                            <div class="question-item" data-i18n="question2">و چگونه می‌تواند محدود باشد، در حالی که هیچ مرز پایانی برای آن نمی‌شناسیم؟</div>
+                            <div class="question-item" data-i18n="question3">اگر هستی حقیقتاً نامتناهی باشد، چرا آغاز شده</div>
+                            <div class="question-item" data-i18n="question4">و اگر متناهی است، فراتر از مرزهایش چه چیزی وجود؟</div>
+                            <div class="question-item" data-i18n="question5">آیا ماده، که خود وابسته به فضا، زمان، و قانون است، می‌تواند آغازگر هستی؟</div>
+                            <div class="question-item" data-i18n="question6">آیا این ماده می‌تواند موجودیت خود را توضیح دهد؟</div>
+                            <div class="question-item" data-i18n="question7">و آیا می‌تواند آگاهی را، که نه قابل اندازه‌گیری است و نه قابل تکرار؛ از دل خود پدید آورد؟</div>
+                            <div class="question-item" data-i18n="question8">آیا «هیچ»؛ که فاقد ساختار و امکان است، می‌تواند چیزی را به‌وجود؟</div>
+                            <div class="question-item" data-i18n="question9">آیا خدا، به‌عنوان موجودی با اراده، می‌تواند آغازگر باشد، بی‌آن‌که خود در زمان قرار داشته باشد؟</div>
+                            <div class="question-item" data-i18n="question10">و اگر آغازگر است، و آفرینش را با اراده و تصمیم رقم می‌زند، آیا می‌توان او را بی‌زمان تعریف کرد، در حالی‌که اراده و تصمیم، خود نیازمند ترتیب و گذر ؟</div>
+                            <div class="question-item" data-i18n="question11">آیا ممکن است چیزی بی‌نهایت و بیکران را در واحدی محدود چون «وجود» جای داد، بی‌آن‌که از بی‌نهایتی‌اش کاسته؟</div>
+                            <div class="question-item" data-i18n="question12">یا برای چیزی که مطلق شناخته می‌شود، صفاتی متناقض تعریف کرد؟ بخشنده‌ای مطلق که بتواند جبر کند؟ یا مهربان مطلقی که بتواند غضب؟</div>
+                            <div class="question-item" data-i18n="question13">آیا خدایی ثابت و تغییرناپذیر را می‌توان با صفاتی تغییردهنده توصیف کرد؟</div>
+                        </div>
+                        
+                        <p data-i18n="intro_paragraph3">
+                            در حالی‌که می‌دانیم صفت در نسبت با دیگری معنا می‌یابد و این نسبت، خود نوعی محدودیت برای وجودی است که نامحدود و بی‌کران شناخته می‌شود؛ و از سوی دیگر هم می دانیم که صفات متناقض، اگر هم‌زمان به یک ذات نسبت داده شوند، نه نشانه ی کمال، بلکه نشانه ی اختلال هستند.
+                        </p>
+                        
+                        <p data-i18n="intro_paragraph4">
+                            این پرسش‌ها نشان می‌دهند که مفاهیم الهیات سنتی، فلسفه‌ی کلاسیک، و حتی نظریات علم مدرن، در توضیح پیدایش هستی با چالش‌های جدی مواجه‌اند. ماده‌گرایی در تعریف «ماده‌ی ازلی» به تناقض می‌رسد؛ الهیات در قفس تنگ توصیف نامتناهی در قالب‌های متناهی زندانی است؛ و علم، در اسارت چارچوب فضا-زمان، با معماهای انرژی تاریک، خلأ کوانتومی و آغاز زمان در دل بی‌زمانی دست به گریبان است.
+                        </p>
+                        
+                        <p data-i18n="intro_paragraph5">
+                            نظریه‌ی «اینوپانتیسم» با بازتعریف مفاهیم بنیادین و ارائه‌ی دو اصل کلیدی، چارچوبی نو برای فهم هستی پیشنهاد می‌کند. این دیدگاه، برخلاف نظریه‌های تصادف‌محور مانند چندجهانی یا برخی تفسیرهای مکانیک کوانتوم، بر قانون‌مندی ذاتی هستی تأکید دارد. پایه‌های آن بر شهود فلسفی، شواهد علمی، و نظم قابل مشاهده در کیهان و سیستم‌های زیستی استوار است. «اینوپانتیسم» نظم را نه حاصل تصادف، بلکه نشانه‌ای از حقیقتی عینی می‌داند؛ حقیقتی مستقل از ذهن و احساس، قابل کشف و بررسی، و در تضاد با نسبی‌گرایی. این نظریه، مخاطب را به سفری برای کشف این حقیقت بنیادین دعوت می‌کند.
+                        </p>
+                    </div>
+                </div>
+                <!-- کادر جدید: حقیقت پنهان در دل هستی -->
+<div class="text-box">
+    <h3 class="text-box-title" data-i18n="hidden_truth_title">حقیقت پنهان در دل هستی</h3>
+    <div class="text-box-content">
+        <p data-i18n="hidden_truth_paragraph1">نمی‌توان با استناد به «نبودِ حقیقت»، اثبات کرد که هیچ حقیقتی وجود ندارد؛ زیرا خودِ مفهومِ نبود، وابسته به وجودِ حقیقت است. بی‌نظمی نیز تنها در نسبت با نظم معنا می‌یابد. بنابراین، باید پذیرفت که هستی بر محور نظمی بنیادین استوار است؛ نظمی که یکی از جلوه‌های حقیقت پنهان در ساختار هستی‌ست.</p>
+        
+        <p data-i18n="hidden_truth_paragraph2">نظریه‌ی «اینوپانتیئیسم» بر این باور است که هستی، حامل یک حقیقت یگانه است؛ حقیقتی که نه در تقابل با دیگری، بلکه در نسبت با غیاب خود معنا می‌یابد. همان‌گونه که تاریکی، نه واقعیتی مستقل، بلکه فقدان نور است، عدمِ حقیقت نیز چیزی جز غیاب آن نیست. در این نگاه، حقیقت نه در تضاد، بلکه در حضور معنا دارد؛ نه در جدال مفاهیم، بلکه در سکوتی که از نبودِ آن حکایت می‌کند.</p>
+        
+        <p data-i18n="hidden_truth_paragraph3">«اینوپانتیئیسم» ذهن را از تحلیل‌های انتزاعی به‌سوی تجربه‌ی بی‌واسطه‌ی هستی هدایت می‌کند؛ زیرا حقیقت، پیش از آن‌که موضوع استدلال باشد، در خودِ هستی جاری‌ست. این حقیقت، همواره در دسترس بوده؛ نه در دوردست‌ها، نه در مفاهیم انتزاعی، بلکه در هر لحظه، در هر نگاه، و در هر انتخاب.</p>
+        
+        <p data-i18n="hidden_truth_paragraph4">و انسان، نه به‌خاطر آزادی مطلق، بلکه به‌واسطه‌ی توانایی در تشخیص این انتخاب، موجودی مسئول است. این انتخاب، نه صرفاً اخلاقی، بلکه مشارکتی با این حقیقت پنهان است. مهر و محبت، نه صفاتی افزوده، بلکه کیفیت‌هایی‌اند که با انتخاب حقیقت فعال می‌شوند؛ و نبودشان، صرفاً غیاب آن انتخاب است.</p>
+        
+        <p data-i18n="hidden_truth_paragraph5">«اینوپانتیئیسم» بر آن است که هستی، از آغاز، بستری برای این انتخاب ها بوده؛ و اکنون، بیش از هر زمان، انسان در آستانه‌ی هم‌نوایی با این حقیقت قرار دارد. اینوپانتیئیسم، ما را به آینده‌ای دعوت می‌کند که در آن، بودنْ خودْ معناست؛ و مشارکت در حقیقت، مسیر شکوفایی انسان و هستی است. این آینده، نه وعده‌ای دور، بلکه امکانی زنده در دل اکنون است.</p>
     </div>
+</div>
+                            
+                <!-- کادر سوم: از تصادف تا حقیقت -->
+                <div class="text-box">
+                    <h3 class="text-box-title" data-i18n="chance_title">از تصادف تا حقیقت: تأملی بر منطق پیدایش هستی</h3>
+                    <div class="text-box-content">
+                        <p data-i18n="chance_paragraph1">علم امروز، با تمام پیشرفت‌هایش، هنوز نتوانسته توضیحی قطعی برای چرایی پیدایش هستی ارائه دهد. برخی نظریه‌ها، منشأ جهان را به «تصادف» نسبت می‌دهند؛ اما آیا تصادف، که ذاتاً فاقد هدف، نظم و جهت‌گیری است، می‌تواند بوجود آورنده ی جهانی چنین منظم، پیچیده و آگاه باشد؟ اگر همه چیز تصادفی باشد، خودِ مفهوم تصادف بی‌معنا می‌شود، زیرا تصادف تنها در تقابل با نظم معنا دارد.</p>
+                        
+                        <p data-i18n="chance_paragraph2">ظهور آگاهی انسانی، با توانایی شناخت، انتخاب و معناآفرینی، نمی‌تواند حاصل یک فرآیند کور و تصادفی باشد. احتمال آماری شکل‌گیری ذهنی آگاه در جهانی فاقد جهت‌گیری، عملاً صفر است. این هماهنگی میان ذهن و هستی، نشان می‌دهد که جهان از آغاز، بستری برای ظهور آگاهی فراهم کرده است.</p>
+                        
+                        <p data-i18n="chance_paragraph3">از سوی دیگر، علم بر پایه‌ی نظم، قانون‌مندی و تکرارپذیری بنا شده است. در جهانی کاملاً تصادفی، هیچ پدیده‌ای قابل تکرار نبود تا تجربه‌پذیر باشد؛ و بدون تجربه، علم نمی‌توانست شکل بگیرد. بنابراین، خودِ وجود علم، شاهدی روشن بر وجود نظم در هستی است. نظمی که با تصادف‌گرایی ناسازگار است.</p>
+                        
+                        <p data-i18n="chance_paragraph4">در نهایت، تجربه‌ی زیسته‌ی انسان؛ با روابط، اخلاق، هنر و معنا؛ نشان می‌دهد که هستی صرفاً یک حادثه‌ی کور نیست. انسان معنا را می‌جوید، در آن زندگی می‌کند و آن را می‌آفریند. این میل به معنا، گواهی‌ست بر وجود حقیقتی فراتر از تصادف؛ حقیقتی قانون‌مند، هدف‌دار و نظام‌محور.</p>
+                    </div>
+                </div>
+                   
+                <!-- کادر دوم: از مهبانگ (بیگ بنگ) تا حقیقت بی‌نهایت -->
+                <div class="text-box">
+                    <h3 class="text-box-title" data-i18n="bigbang_title">از مهبانگ (بیگ بنگ) تا حقیقت بی‌نهایت</h3>
+                    <div class="text-box-content">
+                        <p data-i18n="bigbang_paragraph1">علم امروز می‌گوید جهان از یک نقطه‌ی آغازین به نام «مهبانگ» (Big Bang) پدید آمده است. اما اگر پیش از مهبانگ هیچ رویدادی رخ نداده باشد، یعنی هیچ «زمانی» وجود نداشته است؛ و اگر زمان نبوده، هیچ «تغییری» ممکن نبوده؛ و بدون تغییر، هیچ «حرکتی» نمی‌توانسته رخ دهد؛ و بدون حرکت، هیچ «اتمی» نمی‌توانسته شکل بگیرد؛ و بدون اتم، هیچ «ماده‌ای» نمی‌توانسته وجود داشته باشد.</p>
+                        
+                        <p data-i18n="bigbang_paragraph2">پس اگر پیش از مهبانگ هیچ آغاز، زمان، تغییر یا حرکتی نبوده، ادعای ازلی بودن ماده، در تضاد با خودِ تعریف ماده است. چراکه:</p>
+                        
+                        <!-- معادلات طلایی و برجسته -->
+                        <div class="gold-equation">
+                            <span class="equation-line" data-i18n="equation_line1">اتم - حرکت = اتم - اتم</span>
+                            <span class="equation-line" data-i18n="equation_line2">ماده - اتم = ماده - ماده</span>
+                        </div>
+                        
+                        <p data-i18n="bigbang_paragraph3">در چنین شرایطی، نه ماده‌ای می‌توانسته باشد، نه فاعلی، نه اراده‌ای، نه خلقتی. تنها چیزی که می‌توانسته باشد، حقیقتی بی‌مرز، بی‌نیاز از زمان، و زاینده است؛ حقیقتی که خودْ حرکت را ممکن می‌سازد، نه آن‌که از حرکت پدید آمده باشد.</p>
+                    </div>
+                </div>
+        
+        </section>
+
+        <!-- Quote Section -->
+        <section class="quote-section">
+            <p class="quote-text" data-i18n="quote_text">
+                حقیقت در پشت همه ی تضادها پنهان است. در پشت همه ی نظریه‌هایی که جز بن‌بست، ترس و بیهودگی چیزی به ما نبخشیده‌اند
+            </p>
+            <p class="quote-author" data-i18n="quote_author">کوروش ایون</p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <div class="logo">
+       
+<!-- در فوتر -->
+<img src="images/LOGO-%20Inopantism.png" 
+     alt="Inopantism Logo" 
+     class="logo-image"
+     style="height: 32px;">
+                        <span class="logo-text" style="font-size: 1rem;">INOPANTHEISM</span>
+                    </div>
+                    <p data-i18n="footer_desc">اینوپانتئیسم می‌گوید: خدا جهان نیست، اما جهان را نمی‌توان از خدا جدا دانست؛ همان‌گونه که رقص بدون رقصنده معنا ندارد، هرچند رقصنده خودْ رقص نیست. آن‌ها از هم متمایزند، اما در ریتم هستی، به‌گونه‌ای جدایی‌ناپذیر درهم‌تنیده‌اند.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 data-i18n="navigation">ناوبری</h3>
+                    <a href="index.html" data-i18n="home">خانه</a><br>
+                    <a href="theory.html" data-i18n="theory">نظریه</a><br>
+                    <a href="articles.html" data-i18n="articles">مقالات</a><br>
+                    <a href="books.html" data-i18n="books">کتاب ها</a><br>
+                    <a href="about.html" data-i18n="about">درباره من</a><br>
+                    <a href="contact.html" data-i18n="contact">تماس با من</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 data-i18n="connect">ارتباط</h3>
+                    <div class="social-links">
+                        <a href="mailto:cyrusaven369@gmail.com" class="social-link">
+                            <i class="fas fa-envelope"></i>
+                            <span>cyrusaven369@gmail.com</span>
+                        </a>
+                        <a href="https://twitter.com/CyrusAven369" target="_blank" class="social-link">
+                            <i class="fab fa-twitter"></i>
+                            <span>@CyrusAven369</span>
+                        </a>
+                        <a href="https://youtube.com/@CyrusAven369" target="_blank" class="social-link">
+                            <i class="fab fa-youtube"></i>
+                            <span>@CyrusAven369</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p data-i18n="copyright">© 2024 کوروش ایون – کلیه حقوق محفوظ است</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ایجاد کهکشان
+        function createGalaxy() {
+            const galaxy = document.getElementById('galaxyBackground');
+            const starCount = 150;
+            
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                
+                const size = Math.random() * 1.5 + 0.5;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                star.style.animationDelay = `${Math.random() * 12}s`;
+                
+                galaxy.appendChild(star);
+            }
+        }
+
+        // اسکرول هدر
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 20) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // مدیریت دکمه اسکرول به بالا
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollToTopBtn.classList.add('visible');
+            } else {
+                scrollToTopBtn.classList.remove('visible');
+            }
+        });
+
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // سیستم چندزبانه - کامل
+        const translations = {
+            "home": {
+                "fa": "خانه",
+                "en": "Home",
+                "tr": "ANA SAYFA"
+            },
+            "theory": {
+                "fa": "نظریه",
+                "en": "Theory",
+                "tr": "TEORİ"
+            },
+            "articles": {
+                "fa": "مقالات",
+                "en": "Articles",
+                "tr": "MAKALELER"
+                  },
+            "books": {
+                "fa": "کتابها",
+                "en": "Books",
+                "tr": "KİTAPLAR"
+                  },
+            "about": {
+                "fa": "درباره من",
+                "en": "About Me",
+                "tr": "HAKKIMDA"
+            },
+            "contact": {
+                "fa": "تماس با من",
+                "en": "Contact Me",
+                "tr": "BANA ULAŞIN"
+            },
+            "hero_title": {
+                "fa": "اینوپانتئیسم",
+                "en": "INOPANTHEISM",
+                "tr": "İNOPANTEİZM"
+            },
+            "hero_subtitle": {
+                "fa": "نظریه‌ی «اینوپانتیئیسم» بازخوانی بنیادین هستی‌ست؛ با عبور از دوگانگی‌های فلسفی، محدودیت‌های علمی، و تصویر سنتی از خدا، این نظریه نگاهی وحدت‌گرایانه به حقیقتی زنده و جاری در دل هستی ارائه می‌دهد.",
+                "en": "The theory of 'Inopantheism' is a fundamental reinterpretation of existence; by transcending philosophical dualities, scientific limitations, and the traditional image of God, this theory offers a unifying perspective on a living truth flowing within existence.",
+                "tr": "'İnopanteizm' teorisi, varoluşun temel bir yeniden okumasıdır; felsefi ikilikleri, bilimsel sınırlamaları ve geleneksel Tanrı imgesini aşarak, bu teori varoluşun içinde akan canlı bir hakikate bütünleştirici bir bakış açısı sunar."
+            },
+            "cta_theory": {
+                "fa": "مطالعه نظریه",
+                "en": "Study Theory",
+                "tr": "TEORİYİ İNCELE"
+            },
+            "cta_about": {
+                "fa": "درباره نویسنده",
+                "en": "About Author",
+                "tr": "YAZAR HAKKINDA"
+            },
+            "features_title": {
+                "fa": "آغاز «اینوپانتئیسم» از دل معما",
+                "en": "Preface: The Emergence of Inopantheism from the Heart of a Mystery",
+                "tr": "ÖNSÖZ: İNOPANTHEİZM'İN GİZEMDEN DOĞUŞU"
+            },
+            "intro_paragraph1": {
+                "fa": "پیدایش هستی یکی از بنیادی‌ترین معماهایی است که از آغاز شکل‌گیری اندیشه تا کنون، ذهن بشر را به چالش کشیده است. از اسطوره‌های کهن تا نظریه‌های علمی مدرن، انسان همواره کوشیده است درک کند که این «بودن» از کجا سربرآورده و چگونه ممکن شده است. با این حال، هر پاسخی خود پرسشی تازه آفریده و هیچ‌یک از نظام‌های فکری؛ نه الهیات، نه علم و نه فلسفه؛ نتوانسته‌اند پاسخی بی‌تناقض و قاطع به این پرسش ارائه دهند.",
+                "en": "The origin of existence is one of the most fundamental mysteries that has challenged the human mind since the dawn of thought. From ancient myths to modern scientific theories, humanity has persistently sought to understand where this 'being' comes from and how it became possible. Yet every answer has given rise to new questions, and none of the major intellectual systems—neither theology, nor science, nor philosophy—has offered a definitive and contradiction-free explanation.",
+                "tr": "Varlığın ortaya çıkışı, düşüncenin başlangıcından bu yana insan zihnini en çok zorlayan temel gizemlerden biridir. Kadim mitlerden modern bilimsel teorilere kadar insan, bu 'varoluş'un nereden geldiğini ve nasıl mümkün olduğunu anlamaya çalışmıştır. Ancak her cevap yeni bir soruyu doğurmuş ve ne teoloji, ne bilim, ne de felsefe bu soruya çelişkisiz ve kesin bir yanıt sunabilmiştir."
+            },
+            "intro_paragraph2": {
+                "fa": "پرسش‌هایی که هنوز پابرجا هستند:",
+                "en": "The questions remain:",
+                "tr": "HÂLÂ GEÇERLİLİĞİNİ KORUYAN SORULAR ŞUNLARDIR:"
+            },
+            "question1": {
+                "fa": "چگونه ممکن است هستی بی‌نهایت باشد، در حالی که برای آن آغازی متصوریم؟",
+                "en": "How can existence be infinite if we imagine it had a beginning?",
+                "tr": "VARLIK SONSUZ OLABİLİR Mİ, EĞER ONUN İÇİN BİR BAŞLANGIÇ TASAVVUR EDİYORSAK?"
+            },
+            "question2": {
+                "fa": "و چگونه می‌تواند محدود باشد، در حالی که هیچ مرز پایانی برای آن نمی‌شناسیم؟",
+                "en": "And how can it be finite if we perceive no ultimate boundary?",
+                "tr": "VE SINIRLI OLABİLİR Mİ, EĞER ONUN İÇİN NİHAİ BİR SINIR TANIMIYORSAK?"
+            },
+            "question3": {
+                "fa": "اگر هستی حقیقتاً نامتناهی باشد، چرا آغاز شده است؟",
+                "en": "If existence is truly infinite, why did it begin?",
+                "tr": "VARLIK GERÇEKTEN SONSUZSA, NEDEN BAŞLAMIŞTIR?"
+            },
+            "question4": {
+                "fa": "و اگر متناهی است، فراتر از مرزهایش چه چیزی وجود دارد؟",
+                "en": "And if it is finite, what lies beyond its limits?",
+                "tr": "VE SINIRLIYSA, SINIRLARININ ÖTESİNDE NE VARDIR?"
+            },
+            "question5": {
+                "fa": "آیا ماده، که خود وابسته به فضا، زمان، و قانون است، می‌تواند آغازگر هستی باشد؟",
+                "en": "Can matter—which itself depends on space, time, and law—be the origin of existence?",
+                "tr": "UZAY, ZAMAN VE YASAYA BAĞLI OLAN MADDE, VARLIĞIN BAŞLANGICI OLABİLİR Mİ?"
+            },
+            "question6": {
+                "fa": "آیا این ماده می‌تواند موجودیت خود را توضیح دهد؟",
+                "en": "Can matter explain its own being?",
+                "tr": "MADDE KENDİ VARLIĞINI AÇIKLAYABİLİR Mİ?"
+            },
+            "question7": {
+                "fa": "و آیا می‌تواند آگاهی را، که نه قابل اندازه‌گیری است و نه قابل تکرار؛ از دل خود پدید آورد؟",
+                "en": "And can it give rise to consciousness, which is neither measurable nor repeatable?",
+                "tr": "ÖLÇÜLEMEYEN VE TEKRARLANAMAYAN BİLİNÇ, MADDENİN İÇİNDEN DOĞABİLİR Mİ?"
+            },
+            "question8": {
+                "fa": "آیا «هیچ»؛ که فاقد ساختار و امکان است، می‌تواند چیزی را به‌وجود آورد؟",
+                "en": "Can 'nothing,' which lacks structure and potential, bring forth something?",
+                "tr": "YAPISI VE POTANSİYELİ OLMAYAN 'HİÇLİK' BİR ŞEY YARATABİLİR Mİ?"
+            },
+            "question9": {
+                "fa": "آیا خدا، به‌عنوان موجودی با اراده، می‌تواند آغازگر باشد، بی‌آن‌که خود در زمان قرار داشته باشد؟",
+                "en": "Can God, as a willful being, be the initiator without being subject to time?",
+                "tr": "İRADE SAHİBİ BİR VARLIK OLARAK TANRI, ZAMANIN DIŞINDA OLUP YARATICI OLABİLİR Mİ?"
+            },
+            "question10": {
+                "fa": "و اگر آغازگر است، و آفرینش را با اراده و تصمیم رقم می‌زند، آیا می‌توان او را بی‌زمان تعریف کرد، در حالی‌که اراده و تصمیم، خود نیازمند ترتیب و گذر زمان‌اند؟",
+                "en": "And if God creates through will and decision, can He be defined as timeless, when will and decision require sequence and temporal flow?",
+                "tr": "VE EĞER YARATICIYSA, İRADE VE KARAR YOLUYLA YARATIYORSA, ZAMAN GEREKTİREN BU SÜREÇTE NASIL ZAMANSIZ TANIMLANABİLİR?"
+            },
+            "question11": {
+                "fa": "آیا ممکن است چیزی بی‌نهایت و بیکران را در واحدی محدود چون «وجود» جای داد، بی‌آن‌که از بی‌نهایتی‌اش کاسته شود؟",
+                "en": "Is it possible to contain something infinite within a limited unit like 'being' without diminishing its infinitude?",
+                "tr": "SONSUZ OLAN BİR ŞEYİ 'VARLIK' GİBİ SINIRLI BİR BİRİMDE BARINDIRMAK MÜMKÜN MÜDÜR, ONUN SONSUZLUĞUNDAN EKSİLTMEDEN?"
+            },
+            "question12": {
+                "fa": "یا برای چیزی که مطلق شناخته می‌شود، صفاتی متناقض تعریف کرد؟ بخشنده‌ای مطلق که بتواند جبر کند؟ یا مهربان مطلقی که بتواند غضب نماید؟",
+                "en": "Can we assign contradictory attributes to what is considered absolute? A perfectly merciful being who can also be wrathful? A perfectly generous one who can impose compulsion?",
+                "tr": "MUTLAK OLARAK TANIMLANAN BİR VARLIĞA ÇELİŞKİLİ SIFATLAR YÜKLENEBİLİR Mİ? ZORLAYABİLEN MUTLAK BİR BAĞIŞLAYICI? GAZAP EDEBİLEN MUTLAK BİR MERHAMET SAHİBİ?"
+            },
+            "question13": {
+                "fa": "آیا خدایی ثابت و تغییرناپذیر را می‌توان با صفاتی تغییردهنده توصیف کرد؟",
+                "en": "Can a changeless and immutable God be described with changing attributes?",
+                "tr": "DEĞİŞMEYEN VE SABİT BİR TANRI, DEĞİŞKEN SIFATLARLA TANIMLANABİLİR Mİ?"
+            },
+            "intro_paragraph3": {
+                "fa": "در حالی‌که می‌دانیم صفت در نسبت با دیگری معنا می‌یابد و این نسبت، خود نوعی محدودیت برای وجودی است که نامحدود و بی‌کران شناخته می‌شود؛ و از سوی دیگر هم می دانیم که صفات متناقض، اگر هم‌زمان به یک ذات نسبت داده شوند، نه نشانه ی کمال، بلکه نشانه ی اختلال هستند.",
+                "en": "While we know that attributes gain meaning in relation to another, and this relation itself is a kind of limitation for an existence known as unlimited and boundless; and on the other hand, we also know that contradictory attributes, if attributed simultaneously to one essence, are not a sign of perfection but rather a sign of disorder.",
+                "tr": "SIFATLARIN BAŞKA BİR ŞEYLE İLİŞKİDE ANLAM KAZANDIĞINI VE BU İLİŞKİNİN KENDİSİNİN, SINIRSIZ VE SONSUZ OLARAK BİLİNEN BİR VARLIK İÇİN BİR TÜR KISITLAMA OLDUĞUNU BİLİRKEN; DİĞER YANDAN, ÇELİŞKİLİ SIFATLARIN AYNI ÖZE AYNI ANDA ATFEDİLMESİNİN MÜKEMMELLİK DEĞİL, BOZUKLUK İŞARETİ OLDUĞUNU DA BİLİRİZ."
+            },
+            "intro_paragraph4": {
+                "fa": "این پرسش‌ها نشان می‌دهند که مفاهیم الهیات سنتی، فلسفه‌ی کلاسیک، و حتی نظریات علم مدرن، در توضیح پیدایش هستی با چالش‌های جدی مواجه‌اند. ماده‌گرایی در تعریف «ماده‌ی ازلی» به تناقض می‌رسد؛ الهیات در قفس تنگ توصیف نامتناهی در قالب‌های متناهی زندانی است؛ و علم، در اسارت چارچوب فضا-زمان، با معماهای انرژی تاریک، خلأ کوانتومی و آغاز زمان در دل بی‌زمانی دست به گریبان است.",
+                "en": "These questions show that the concepts of traditional theology, classical philosophy, and even modern scientific theories face serious challenges in explaining the origin of existence. Materialism reaches contradiction in defining 'eternal matter'; theology is imprisoned in the narrow cage of describing the infinite in finite forms; and science, captive to the space-time framework, grapples with the mysteries of dark energy, quantum vacuum, and the beginning of time within timelessness.",
+                "tr": "BU SORULAR, GELENEKSEL TEOLOJİNİN, KLASİK FELSEFENİN VE HATTA MODERN BİLİMSEL TEORİLERİN KAVRAMLARININ VAROLUŞUN KÖKENİNİ AÇIKLAMADA CİDDİ ZORLUKLARLA KARŞILAŞTIĞINI GÖSTERİYOR. MATERYALİZM 'EBEDİ MADDE'Yİ TANIMLAMADA ÇELİŞKİYE ULAŞIR; TEOLOJİ SONSUZU SONLU FORMLARDA TANIMLAMANIN DAR KAFESİNDE HAPSOLMUŞTUR; VE BİLİM, UZAY-ZAMAN ÇERÇEVESİNİN ESİRİ OLARAK, KARANLIK ENERJİ, KUANTUM VAKUMU VE ZAMANSIZLIĞIN İÇİNDE ZAMANIN BAŞLANGICI GİZEMLERİYLE BOĞUŞUR."
+            },
+            "intro_paragraph5": {
+                "fa": "نظریه‌ی «اینوپانتیسم» با بازتعریف مفاهیم بنیادین و ارائه‌ی دو اصل کلیدی، چارچوبی نو برای فهم هستی پیشنهاد می‌کند. این دیدگاه، برخلاف نظریه‌های تصادف‌محور مانند چندجهانی یا برخی تفسیرهای مکانیک کوانتوم، بر قانون‌مندی ذاتی هستی تأکید دارد. پایه‌های آن بر شهود فلسفی، شواهد علمی، و نظم قابل مشاهده در کیهان و سیستم‌های زیستی استوار است. «اینوپانتیسم» نظم را نه حاصل تصادف، بلکه نشانه‌ای از حقیقتی عینی می‌داند؛ حقیقتی مستقل از ذهن و احساس، قابل کشف و بررسی، و در تضاد با نسبی‌گرایی. این نظریه، مخاطب را به سفری برای کشف این حقیقت بنیادین دعوت می‌کند.",
+                "en": "The theory of 'Inopantheism' proposes a new framework for understanding existence by redefining fundamental concepts and presenting two key principles. Unlike chance-based theories such as multiverse or some interpretations of quantum mechanics, this perspective emphasizes the inherent lawfulness of existence. Its foundations are based on philosophical intuition, scientific evidence, and observable order in the cosmos and biological systems. 'Inopantheism' sees order not as a result of chance, but as a sign of an objective truth; a truth independent of mind and emotion, discoverable and investigable, and in contrast with relativism. This theory invites the audience on a journey to discover this fundamental truth.",
+                "tr": "'İNOPANTEİZM' TEORİSİ, TEMEL KAVRAMLARI YENİDEN TANIMLAYARAK VE İKİ ANAHTAR İLKE SUNARAK VAROLUŞU ANLAMAK İÇİN YENİ BİR ÇERÇEVE ÖNERİR. ÇOKLU EVREN GİBİ ŞANSA DAYALI TEORİLERİN VEYA KUANTUM MEKANİĞİNİN BAZI YORUMLARININ AKSİNE, BU PERSPEKTİF VAROLUŞUN İÇKİN YASALLIĞINI VURGULAR. TEMELLERİ FELSEFİ SEZGİ, BİLİMSEL KANITLAR VE KOZMOSTA VE BİYOLOJİK SİSTEMLERDE GÖZLEMLENEBİLİR DÜZENE DAYANIR. 'İNOPANTEİZM' DÜZENİ ŞANSIN SONUCU DEĞİL, NESNEL BİR HAKİKATİN İŞARETİ OLARAK GÖRÜR; ZİHİN VE DUYGUDAN BAĞIMSIZ, KEŞFEDİLEBİLİR VE ARAŞTIRILABİLİR, VE GÖRECELİLİKLE ÇELİŞEN BİR HAKİKAT. BU TEORİ, DİNLEYİCİYİ BU TEMEL HAKİKATİ KEŞFETMEK İÇİN BİR YOLCULUĞA DAVET EDER."
+
+            },
+    "bigbang_title": {
+        "fa": "از مهبانگ (بیگ بنگ) تا حقیقت بی‌نهایت",
+        "en": "From the Big Bang to Infinite Truth",
+        "tr": "BÜYÜK PATLAMADAN SONSUZ HAKİKATE"
+    },
+    "bigbang_paragraph1": {
+        "fa": "علم امروز می‌گوید جهان از یک نقطه‌ی آغازین به نام «مهبانگ» (Big Bang) پدید آمده است. اما اگر پیش از مهبانگ هیچ رویدادی رخ نداده باشد، یعنی هیچ «زمانی» وجود نداشته است؛ و اگر زمان نبوده، هیچ «تغییری» ممکن نبوده؛ و بدون تغییر، هیچ «حرکتی» نمی‌توانسته رخ دهد؛ و بدون حرکت، هیچ «اتمی» نمی‌توانسته شکل بگیرد؛ و بدون اتم، هیچ «ماده‌ای» نمی‌توانسته وجود داشته باشد.",
+        "en": "Modern science says the universe emerged from an initial point called the 'Big Bang'. But if no event occurred before the Big Bang, that means no 'time' existed; and if there was no time, no 'change' was possible; and without change, no 'movement' could occur; and without movement, no 'atom' could form; and without atoms, no 'matter' could exist.",
+        "tr": "MODERN BİLİM, EVRENİN 'BÜYÜK PATLAMA' ADI VERİLEN BİR BAŞLANGIÇ NOKTASINDAN ORTAYA ÇIKTIĞINI SÖYLÜYOR. ANCAK BÜYÜK PATLAMADAN ÖNCE HİÇBİR OLAY MEYDANA GELMEDİYSE, BU HİÇ 'ZAMAN' OLMADIĞI ANLAMINA GELİR; VE EĞER ZAMAN YOKSA, HİÇBİR 'DEĞİŞİM' MÜMKÜN DEĞİLDİ; VE DEĞİŞİM OLMADAN, HİÇBİR 'HAREKET' GERÇEKLEŞEMEZDİ; VE HAREKET OLMADAN, HİÇBİR 'ATOM' OLUŞAMAZDI; VE ATOM OLMADAN, HİÇBİR 'MADDE' VAR OLAMAZDI."
+    },
+    "bigbang_paragraph2": {
+        "fa": "پس اگر پیش از مهبانگ هیچ آغاز، زمان، تغییر یا حرکتی نبوده، ادعای ازلی بودن ماده، در تضاد با خودِ تعریف ماده است. چراکه:",
+        "en": "Therefore, if before the Big Bang there was no beginning, time, change, or movement, the claim of matter's eternity contradicts the very definition of matter. Because:",
+        "tr": "DOLAYISIYLA, BÜYÜK PATLAMADAN ÖNCE BAŞLANGIÇ, ZAMAN, DEĞİŞİM VEYA HAREKET YOKSA, MADDENİN EZELİ OLDUĞU İDDİASI, MADDENİN TANIMIYLA ÇELİŞİR. ÇÜNKÜ:"
+    },
+    "equation_line1": {
+        "fa": "اتم - حرکت = اتم - اتم",
+        "en": "Atom - Movement = Atom - Atom",
+        "tr": "ATOM - HAREKET = ATOM - ATOM"
+    },
+    "equation_line2": {
+        "fa": "ماده - اتم = ماده - ماده",
+        "en": "Matter - Atom = Matter - Matter",
+        "tr": "MADDE - ATOM = MADDE - MADDE"
+    },
+    "bigbang_paragraph3": {
+        "fa": "در چنین شرایطی، نه ماده‌ای می‌توانسته باشد، نه فاعلی، نه اراده‌ای، نه خلقتی. تنها چیزی که می‌توانسته باشد، حقیقتی بی‌مرز، بی‌نیاز از زمان، و زاینده است؛ حقیقتی که خودْ حرکت را ممکن می‌سازد، نه آن‌که از حرکت پدید آمده باشد.",
+        "en": "Under such conditions, there could be no matter, no agent, no will, no creation. The only thing that could exist is a boundless truth, independent of time, and generative; a truth that makes movement possible itself, not one that emerged from movement.",
+        "tr": "BÖYLE KOŞULLARDA NE MADDE, NE FAIL, NE İRADE, NE DE YARATILIŞ OLABİLİRDİ. VAR OLABİLECEK TEK ŞEY, SINIRSIZ, ZAMANDAN BAĞIMSIZ VE ÜRETİCİ BİR HAKİKATTİR; HAREKETTEN DOĞMAYAN, HAREKETİ MÜMKÜN KILAN BİR HAKİKAT."
+    },
+    
+    "chance_title": {
+        "fa": "از تصادف تا حقیقت: تأملی بر منطق پیدایش هستی",
+        "en": "From Chance to Truth: Reflection on the Logic of Existence",
+        "tr": "ŞANSTAN HAKİKATE: VAROLUŞUN MANTIĞI ÜZERİNE BİR DÜŞÜNCE"
+    },
+    "chance_paragraph1": {
+        "fa": "علم امروز، با تمام پیشرفت‌هایش، هنوز نتوانسته توضیحی قطعی برای چرایی پیدایش هستی ارائه دهد. برخی نظریه‌ها، منشأ جهان را به «تصادف» نسبت می‌دهند؛ اما آیا تصادف، که ذاتاً فاقد هدف، نظم و جهت‌گیری است، می‌تواند بوجود آورنده ی جهانی چنین منظم، پیچیده و آگاه باشد؟ اگر همه چیز تصادفی باشد، خودِ مفهوم تصادف بی‌معنا می‌شود، زیرا تصادف تنها در تقابل با نظم معنا دارد.",
+        "en": "Modern science, despite all its advancements, has not been able to provide a definitive explanation for why existence came to be. Some theories attribute the origin of the universe to 'chance'; but can chance, which is inherently devoid of purpose, order, and direction, be the creator of such an orderly, complex, and conscious world? If everything were random, the very concept of chance becomes meaningless, because chance only makes sense in contrast to order.",
+        "tr": "MODERN BİLİM, TÜM GELİŞMELERİNE RAĞMEN, VAROLUŞUN NEDEN ORTAYA ÇIKTIĞINA DAİR KESİN BİR AÇIKLAMA SUNAMA DI. BAZI TEORİLER EVRENİN KÖKENİNİ 'ŞANSA' ATFEDER; ANCAK ÖZÜNDE AMAÇ, DÜZEN VE YÖNELİMDEN YOKSUN OLAN ŞANS, BU KADAR DÜZENLİ, KARMAŞIK VE BİLİNÇLİ BİR DÜNYANIN YARATICISI OLABİLİR Mİ? EĞER HER ŞEY RASTGELE OLSAYDI, ŞANS KAVRAMININ KENDİSİ ANLAMSIZ HALE GELİRDİ, ÇÜNKÜ ŞANS ANCAK DÜZENLE TEZAT İÇİNDE ANLAM KAZANIR."
+    },
+    "chance_paragraph2": {
+        "fa": "ظهور آگاهی انسانی، با توانایی شناخت، انتخاب و معناآفرینی، نمی‌تواند حاصل یک فرآیند کور و تصادفی باشد. احتمال آماری شکل‌گیری ذهنی آگاه در جهانی فاقد جهت‌گیری، عملاً صفر است. این هماهنگی میان ذهن و هستی، نشان می‌دهد که جهان از آغاز، بستری برای ظهور آگاهی فراهم کرده است.",
+        "en": "The emergence of human consciousness, with its capacity for cognition, choice, and meaning-making, cannot be the result of a blind and random process. The statistical probability of a conscious mind forming in a directionless universe is practically zero. This harmony between mind and existence shows that the world has provided a foundation for the emergence of consciousness from the beginning.",
+        "tr": "İNSAN BİLİNCİNİN ORTAYA ÇIKIŞI, BİLİŞ, SEÇİM VE ANLAM YARATMA YETENEĞİYLE, KÖR VE RASTGELE BİR SÜRECİN SONUCU OLAMAZ. YÖNLENDİRİLMEYEN BİR EVRENDE BİLİNÇLİ BİR ZİHNİN OLUŞMA OLASILIĞI İSTATİSTİKSEL OLARAK PRATİKTE SIFIRDIR. ZİHİN VE VAROLUŞ ARASINDAKI BU UYUM, DÜNYANIN BAŞLANGIÇTAN İTİBAREN BİLİNCİN ORTAYA ÇIKMASI İÇİN BİR ZEMİN SAĞLADIĞINI GÖSTERİR."
+    },
+    "chance_paragraph3": {
+        "fa": "از سوی دیگر، علم بر پایه‌ی نظم، قانون‌مندی و تکرارپذیری بنا شده است. در جهانی کاملاً تصادفی، هیچ پدیده‌ای قابل تکرار نبود تا تجربه‌پذیر باشد؛ و بدون تجربه، علم نمی‌توانست شکل بگیرد. بنابراین، خودِ وجود علم، شاهدی روشن بر وجود نظم در هستی است. نظمی که با تصادف‌گرایی ناسازگار است.",
+        "en": "On the other hand, science is built upon order, regularity, and repeatability. In a completely random universe, no phenomenon would be repeatable enough to be empirically testable; and without experience, science could not form. Therefore, the very existence of science is clear evidence of order in existence—an order incompatible with chance-based theories.",
+        "tr": "DİĞER YANDAN, BİLİM DÜZEN, YASALLIK VE TEKRARLANABİLİRLİK ÜZERİNE KURULUDUR. TAMAMEN RASTGELE BİR EVRENDE, HİÇBİR FENOMEN AMPİRİK OLARAK TEST EDİLEBİLECEK KADAR TEKRARLANABİLİR OLMAZDI; VE DENEYİM OLMADAN BİLİM OLUŞAMAZDI. DOLAYISIYLA, BİLİMİN VARLIĞININ KENDİSİ, VAROLUŞTA DÜZENİN OLDUĞUNUN AÇIK KANITIDIR—ŞANS TEMELLİ TEORİLERLE BAĞDAŞMAYAN BİR DÜZEN."
+    },
+    "chance_paragraph4": {
+        "fa": "در نهایت، تجربه‌ی زیسته‌ی انسان؛ با روابط، اخلاق، هنر و معنا؛ نشان می‌دهد که هستی صرفاً یک حادثه‌ی کور نیست. انسان معنا را می‌جوید، در آن زندگی می‌کند و آن را می‌آفریند. این میل به معنا، گواهی‌ست بر وجود حقیقتی فراتر از تصادف؛ حقیقتی قانون‌مند، هدف‌دار و نظام‌محور.",
+        "en": "Finally, human lived experience—with relationships, ethics, art, and meaning—shows that existence is not merely a blind accident. Humans seek meaning, live in it, and create it. This desire for meaning testifies to the existence of a truth beyond chance; a truth that is lawful, purposeful, and systematic.",
+        "tr": "SON OLARAK, İNSANIN YAŞANMIŞ DENEYİMİ—İLİŞKİLER, ETİK, SANAT VE ANLAMLA—VAROLUŞUN SADECE KÖR BİR KAZA OLMADIĞINI GÖSTERİR. İNSAN ANLAM ARAR, ONUN İÇİNDE YAŞAR VE ONU YARATIR. ANLAM ARAYIŞI, ŞANSIN ÖTESİNDE BİR HAKİKATİN VARLIĞINA TANIKLIK EDER; YASALI, AMAÇLI VE SİSTEMATİK BİR HAKİKATE."
+    },
+    
+    "hidden_truth_title": {
+        "fa": "حقیقت پنهان در دل هستی",
+        "en": "The Hidden Truth Within Existence",
+        "tr": "VAROLUŞUN KALBİNDE GİZLİ HAKİKAT"
+    },
+    "hidden_truth_paragraph1": {
+        "fa": "نمی‌توان با استناد به «نبودِ حقیقت»، اثبات کرد که هیچ حقیقتی وجود ندارد؛ زیرا خودِ مفهومِ نبود، وابسته به وجودِ حقیقت است. بی‌نظمی نیز تنها در نسبت با نظم معنا می‌یابد. بنابراین، باید پذیرفت که هستی بر محور نظمی بنیادین استوار است؛ نظمی که یکی از جلوه‌های حقیقت پنهان در ساختار هستی‌ست.",
+        "en": "One cannot prove that no truth exists by appealing to the 'absence of truth,' because the very concept of absence depends on the existence of truth. Disorder also only makes sense in relation to order. Therefore, it must be accepted that existence is founded upon a fundamental order—an order that is one manifestation of the hidden truth within the structure of existence.",
+        "tr": "'HAKİKATİN YOKLUĞU'NA DAYANARAK HİÇBİR HAKİKAT OLMADIĞINI KANITLAYAMAYIZ; ÇÜNKÜ YOKLUK KAVRAMININ KENDİSİ, HAKİKATİN VARLIĞINA BAĞLIDIR. DÜZENSİZLİK DE ANCAK DÜZENLE İLİŞKİSİNDE ANLAM KAZANIR. BU NEDENLE, VAROLUŞUN TEMEL BİR DÜZENE DAYANDIĞINI KABUL ETMEK GEREKİR; VAROLUŞUN YAPISINDAKİ GİZLİ HAKİKATİN TEZAHÜRLERİNDEN BİRİ OLAN BİR DÜZEN."
+    },
+    "hidden_truth_paragraph2": {
+        "fa": "نظریه‌y «اینوپانتیئیسم» بر این باور است که هستی، حامل یک حقیقت یگانه است؛ حقیقتی که نه در تقابل با دیگری، بلکه در نسبت با غیاب خود معنا می‌یابد. همان‌گونه که تاریکی، نه واقعیتی مستقل، بلکه فقدان نور است، عدمِ حقیقت نیز چیزی جز غیاب آن نیست. در این نگاه، حقیقت نه در تضاد، بلکه در حضور معنا دارد؛ نه در جدال مفاهیم، بلکه در سکوتی که از نبودِ آن حکایت می‌کند.",
+        "en": "The theory of 'Inopantheism' holds that existence carries a singular truth; a truth that gains meaning not in opposition to another, but in relation to its own absence. Just as darkness is not an independent reality but the absence of light, the absence of truth is nothing but its non-presence. In this view, truth finds meaning not in conflict, but in presence; not in the struggle of concepts, but in the silence that speaks of its absence.",
+        "tr": "'İNOPANTEİZM' TEORİSİ, VAROLUŞUN TEK BİR HAKİKAT TAŞIDIĞINA İNANIR; BAŞKA BİR ŞEYLE ÇATIŞMADA DEĞİL, KENDİ YOKLUĞUYLA İLİŞKİSİNDE ANLAM KAZANAN BİR HAKİKAT. TIPKI KARANLIĞIN BAĞIMSIZ BİR GERÇEKLİK DEĞİL, IŞIĞIN YOKLUĞU OLMASI GİBİ, HAKİKATİN YOKLUĞU DA ONUN BULUNMAYIŞINDAN BAŞKA BİR ŞEY DEĞİLDİR. BU BAKIŞTA HAKİKAT ÇATIŞMADA DEĞİL, VARLIKTA ANLAM BULUR; KAVGALARDA DEĞİL, ONUN YOKLUĞUNU İŞARET EDEN SESSİZLİKTE."
+    },
+    "hidden_truth_paragraph3": {
+        "fa": "«اینوپانتیئیسم» ذهن را از تحلیل‌های انتزاعی به‌سوی تجربه‌ی بی‌واسطه‌ی هستی هدایت می‌کند؛ زیرا حقیقت، پیش از آن‌که موضوع استدلال باشد، در خودِ هستی جاری‌ست. این حقیقت، همواره در دسترس بوده؛ نه در دوردست‌ها، نه در مفاهیم انتزاعی، بلکه در هر لحظه، در هر نگاه، و در هر انتخاب.",
+        "en": "'Inopantheism' guides the mind from abstract analyses toward the immediate experience of existence; because truth, before being a subject of reasoning, flows within existence itself. This truth has always been accessible; not in distant realms, not in abstract concepts, but in every moment, in every gaze, and in every choice.",
+        "tr": "'İNOPANTEİZM' ZİHNİ SOYUT ANALİZLERDEN, VAROLUŞUN DOLAYSIZ DENEYİMİNE YÖNLENDİRİR; ÇÜNKÜ HAKİKAT, AKIL YÜRÜTMENİN KONUSU OLMADAN ÖNCE, VAROLUŞUN KENDİSİNDE AKAR. BU HAKİKAT HER ZAMAN ERİŞİLEBİLİR OLMUŞTUR; UZAK DİYARLARDA DEĞİL, SOYUT KAVRAMLARDA DEĞİL, HER AN, HER BAKIŞ VE HER SEÇİMDE."
+    },
+    "hidden_truth_paragraph4": {
+        "fa": "و انسان، نه به‌خاطر آزادی مطلق، بلکه به‌واسطه‌ی توانایی در تشخیص این انتخاب، موجودی مسئول است. این انتخاب، نه صرفاً اخلاقی، بلکه مشارکتی با این حقیقت پنهان است. مهر و محبت، نه صفاتی افزوده، بلکه کیفیت‌هایی‌اند که با انتخاب حقیقت فعال می‌شوند؛ و نبودشان، صرفاً غیاب آن انتخاب است.",
+        "en": "And humans, not because of absolute freedom, but by virtue of their ability to discern this choice, are responsible beings. This choice is not merely ethical, but a participation with this hidden truth. Love and compassion are not added attributes, but qualities activated by choosing truth; their absence is merely the absence of that choice.",
+        "tr": "VE İNSAN, MUTLAK ÖZGÜRLÜKTEN DOLAYI DEĞİL, BU SEÇİMİ AYIRT ETME YETENEĞİ SAYESİNDE SORUMLU BİR VARLIKTIR. BU SEÇİM SADECE AHLAKİ DEĞİL, BU GİZLİ HAKİKATLE BİR İŞTİRAKTİR. SEVGİ VE ŞEFKAT EKLENMİŞ NİTELİKLER DEĞİL, HAKİKATİ SEÇMEYLE AKTİFLEŞEN VASIFLARDIR; YOKLUKLARI SADECE O SEÇİMİN YOKLUĞUDUR."
+    },
+    "hidden_truth_paragraph5": {
+        "fa": "«اینوپانتیئیسم» بر آن است که هستی، از آغاز، بستری برای این انتخاب ها بوده؛ و اکنون، بیش از هر زمان، انسان در آستانه‌ی هم‌نوایی با این حقیقت قرار دارد. اینوپانتیئیسم، ما را به آینده‌ای دعوت می‌کند که در آن، بودنْ خودْ معناست؛ و مشارکت در حقیقت، مسیر شکوفایی انسان و هستی است. این آینده، نه وعده‌ای دور، بلکه امکانی زنده در دل اکنون است.",
+        "en": "'Inopantheism' maintains that existence has been a ground for these choices from the beginning; and now, more than ever, humanity stands at the threshold of harmony with this truth. Inopantheism invites us to a future where being itself is meaning; and participation in truth is the path to the flourishing of both humanity and existence. This future is not a distant promise, but a living possibility within the present moment.",
+        "tr": "'İNOPANTEİZM' VAROLUŞUN BAŞLANGIÇTAN BERİ BU SEÇİMLER İÇİN BİR ZEMİN OLDUĞUNU SAVUNUR; VE ŞİMDİ, HER ZAMANKİNDEN DAHA FAZLA, İNSANLIK BU HAKİKATLE UYUM EŞİĞİNDE DURMAKTADIR. İNOPANTEİZM BİZİ, VAR OLMANIN KENDİSİNİN ANLAM OLDUĞU BİR GELECEĞE DAVET EDER; VE HAKİKATE İŞTİRAK, İNSANIN VE VAROLUŞUN GELİŞİMİNİN YOLUDUR. BU GELECEK UZAK BİR VAAT DEĞİL, ŞİMDİNİN KALBİNDE YAŞAYAN BİR İMKÂNDIR."
+    },
+               "quote_text": {
+                "fa": "حقیقت در پشت همه ی تضادها پنهان است. در پشت همه ی نظریه‌هایی که جز بن‌بست، ترس و بیهودگی چیزی به ما نبخشیده‌اند",
+                "en": "Truth is hidden behind all contradictions. Behind all theories that have given us nothing but dead ends, fear, and futility",
+                "tr": "HAKİKAT TÜM ÇELİŞKİLERİN ARDINDA GİZLİDİR. BİZE ÇIKMAZ, KORKU VE ANLAMSIZLIKTAN BAŞKA BİR ŞEY VERMEYEN TÜM TEORİLERİN ARDINDA"
+            },
+            "quote_author": {
+                "fa": "کوروش ایون",
+                "en": "Cyrus Aven",
+                "tr": "CYRUS AVEN"
+            },
+            "footer_desc": {
+                "fa": "اینوپانتئیسم می‌گوید: خدا جهان نیست، اما جهان را نمی‌توان از خدا جدا دانست؛ همان‌گونه که رقص بدون رقصنده معنا ندارد، هرچند رقصنده خودْ رقص نیست. آن‌ها از هم متمایزند، اما در ریتم هستی، به‌گونه‌ای جدایی‌ناپذیر درهم‌تنیده‌اند.",
+                "en": "Inopantheism states: God is not the world, yet the world cannot be severed from God—just as a dance cannot exist without the dancer, though the dancer is not the dance itself. They are distinct, yet inseparably intertwined in the rhythm of being.",
+                "tr": "İnopanteizm diyor ki: Tanrı evren değildir; ancak evren Tanrı’dan ayrılamaz—tıpkı dansın dansçı olmadan var olamayacağı gibi. Dansçı dans değildir, ama dans onunla var olur. İkisi ayrı olsa da, varoluşun ritminde ayrılmaz biçimde iç içedirler."
+            },
+            "navigation": {
+                "fa": "ناوبری",
+                "en": "Navigation",
+                "tr": "NAVİGASYON"
+            },
+            "connect": {
+                "fa": "ارتباط",
+                "en": "Connect",
+                "tr": "BAĞLANTI"
+                
+            },
+            "copyright": {
+                "fa": "© 2024 کوروش ایون – کلیه حقوق محفوظ است",
+                "en": "© 2024 Cyrus Aven – All rights reserved",
+                "tr": "© 2024 CYRUS AVEN – TÜM HAKLARI SAKLIDIR"
+            }
+        };
+
+        // مدیریت انتخاب زبان
+        function initLanguageSwitcher() {
+            const langBtn = document.getElementById('langBtn');
+            const langDropdown = document.getElementById('langDropdown');
+            const currentLang = document.getElementById('currentLang');
+            const langOptions = document.querySelectorAll('.lang-option');
+            
+            langBtn.addEventListener('click', () => {
+                langDropdown.classList.toggle('show');
+            });
+            
+            langOptions.forEach(option => {
+                option.addEventListener('click', () => {
+                    const selectedLang = option.getAttribute('data-lang');
+                    changeLanguage(selectedLang);
+                    langDropdown.classList.remove('show');
+                });
+            });
+            
+            // بستن منوی زبان با کلیک خارج از آن
+            document.addEventListener('click', (e) => {
+                if (!langBtn.contains(e.target) && !langDropdown.contains(e.target)) {
+                    langDropdown.classList.remove('show');
+                }
+            });
+        }
+
+        // تغییر زبان
+        function changeLanguage(lang) {
+            const currentLang = document.getElementById('currentLang');
+            const elements = document.querySelectorAll('[data-i18n]');
+            
+            // تغییر متن دکمه زبان و direction
+            if (lang === 'fa') {
+                currentLang.textContent = 'فارسی';
+                document.documentElement.lang = 'fa';
+                document.documentElement.dir = 'rtl';
+                document.body.style.direction = 'rtl';
+                document.body.style.textAlign = 'right';
+            } else if (lang === 'en') {
+                currentLang.textContent = 'English';
+                document.documentElement.lang = 'en';
+                document.documentElement.dir = 'ltr';
+                document.body.style.direction = 'ltr';
+                document.body.style.textAlign = 'left';
+            } else if (lang === 'tr') {
+                currentLang.textContent = 'Türkçe';
+                document.documentElement.lang = 'tr';
+                document.documentElement.dir = 'ltr';
+                document.body.style.direction = 'ltr';
+                document.body.style.textAlign = 'left';
+            }
+            
+            // تغییر متن تمام عناصر دارای data-i18n
+            elements.forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[key] && translations[key][lang]) {
+                    element.innerHTML = translations[key][lang];
+                }
+            });
+            
+            // ذخیره زبان انتخاب شده
+            localStorage.setItem('selectedLanguage', lang);
+        }
+
+        // بارگذاری اولیه
+        document.addEventListener('DOMContentLoaded', function() {
+            createGalaxy();
+            initLanguageSwitcher();
+            
+            // بارگذاری زبان ذخیره شده یا زبان پیش‌فرض
+            const savedLang = localStorage.getItem('selectedLanguage') || 'fa';
+            changeLanguage(savedLang);
+        });
+    </script>
 </body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TK2BH9FT"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 </html>
